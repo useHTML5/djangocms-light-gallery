@@ -5,6 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from .models import LightGallery
 
+
 class LightGallery(CMSPluginBase):
     model = LightGallery
     name = _("Light Gallery")
@@ -15,15 +16,23 @@ class LightGallery(CMSPluginBase):
         (None, {
             'fields': [
                 'folder',
+                'crop',
                 ('pageThumbWidth',
-                'pageThumbHeight',),
+                 'pageThumbHeight',),
+            ]
+        }),
+        ('Bootstrap', {
+            'classes': ['collapse', ],
+            'fields': [
+                'bootstrap4_column_class',
+                'bootstrap4_row_class',
             ]
         }),
         (_('Core'), {
             'classes': ['collapse', ],
             'fields': [
                 'mode',
-		'cssEasing',
+                'cssEasing',
                 'easing',
                 'speed',
                 'height',
@@ -181,7 +190,9 @@ class LightGallery(CMSPluginBase):
             'googlePlusDropdownText': instance.googlePlusDropdownText,
             'pinterest': instance.pinterest,
             'pinterestDropdownText': instance.pinterestDropdownText,
+            'instance': instance,
         });
         return context
+
 
 plugin_pool.register_plugin(LightGallery)
