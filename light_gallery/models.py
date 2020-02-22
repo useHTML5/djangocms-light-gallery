@@ -25,9 +25,7 @@ CURRENT_PAGER_POSITIONS = [['left', 'Left'], ['middle', 'Middle'], ['right', 'Ri
 class LightGallery(CMSPlugin):
     crop = models.BooleanField('Превью резать до стандартного размера?', default=True)
     bootstrap4_row_class = models.CharField('Bootstrap4 row class', default='row', max_length=255, blank=True)
-    bootstrap4_column_class = models.CharField('Bootstrap4 column class', default='col-lg-3 py-1', max_length=255,
-                                               blank=True)
-    bootstrap4_image_class = models.CharField('Bootstrap4 image class', default='py-1', max_length=255,
+    bootstrap4_column_class = models.CharField('Bootstrap4 column class', default='col-lg-3 my-1', max_length=255,
                                                blank=True)
     folder = FilerFolderField(
         verbose_name=_('Folder'),

@@ -117,17 +117,15 @@
 <div id="light-gallery-{{ id }}{% if request.toolbar and request.toolbar.edit_mode_active %}edit{% endif %}"
      class="{{ instance.bootstrap4_row_class }}">
     {% for image in images %}
-        <div class="{{ instance.bootstrap4_column_class }}">
-            <a
-                    {% if request.toolbar and request.toolbar.edit_mode_active %}
-                        href="/admin/filer/image/{{ image.id }}/change/"
-                    {% else %}
-                        href="{% thumbnail image.file 1700x1700 %}"
-                    {% endif %}
-                        class="d-block {{ instance.bootstrap4_image_class }}">
-                <img alt="{{ image.default_alt_text }}"
-                     src="{% thumbnail image.file pageThumbWidthHeight crop=instance.crop upscale %}" class="img-fluid">
-            </a>
-        </div>
+        <a class="d-block {{ instance.bootstrap4_column_class }}"
+                {% if request.toolbar and request.toolbar.edit_mode_active %}
+           target="_blank"
+           href="/admin/filer/image/{{ image.id }}/change/"
+                {% else %}
+           href="{% thumbnail image.file 1700x1700 %}"
+                {% endif %}>
+            <img alt="{{ image.default_alt_text }}"
+                 src="{% thumbnail image.file pageThumbWidthHeight crop=instance.crop upscale %}" class="img-fluid">
+        </a>
     {% endfor %}
 </div>
